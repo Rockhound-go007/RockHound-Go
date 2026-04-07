@@ -1,0 +1,37 @@
+Here’s a **clean branch strategy** + exact command to create it.
+
+---
+
+## Branch Name (recommended)
+
+```
+feature/landing-readme-funnel
+```
+
+---
+
+## Create + switch
+
+```bash
+git checkout -b feature/landing-readme-funnel
+```
+
+---
+
+## What goes in this branch
+
+**Files to add/update:**
+
+```
+/README.md                 → upgraded repo README
+/docs/landing.md           → full landing page copy
+/web/landing-page/         → (optional) actual frontend
+```
+
+---
+
+## If pushing to remote
+
+```bash
+git push -u origin feature/landing-readme-funnel
+```
