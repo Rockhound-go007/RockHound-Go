@@ -1,0 +1,286 @@
+## Deliverable
+
+### Branch
+
+```
+feature/landing-page-nextjs
+```
+
+---
+
+## 1. Changed / New Files
+
+```
+/web/landing-page/
+  ├── package.json
+  ├── next.config.js
+  ├── tsconfig.json
+  ├── app/
+  │   ├── layout.tsx
+  │   ├── page.tsx
+  │   └── globals.css
+  └── components/
+      ├── Hero.tsx
+      ├── Features.tsx
+      ├── ProblemSolution.tsx
+      └── CTA.tsx
+```
+
+---
+
+## 2. Implementation
+
+### `/web/landing-page/package.json`
+
+```json
+{
+  "name": "rockhoundgo-landing",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
+```
+
+---
+
+### `/web/landing-page/next.config.js`
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+};
+
+module.exports = nextConfig;
+```
+
+---
+
+### `/web/landing-page/tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "strict": true,
+    "baseUrl": "."
+  }
+}
+```
+
+---
+
+### `/web/landing-page/app/layout.tsx`
+
+```tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body style={{ margin: 0, fontFamily: 'Arial, sans-serif', background: '#0A0A0A', color: '#FAFAFA' }}>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+---
+
+### `/web/landing-page/app/page.tsx`
+
+```tsx
+import Hero from "../components/Hero";
+import ProblemSolution from "../components/ProblemSolution";
+import Features from "../components/Features";
+import CTA from "../components/CTA";
+
+export default function Page() {
+  return (
+    <main>
+      <Hero />
+      <ProblemSolution />
+      <Features />
+      <CTA />
+    </main>
+  );
+}
+```
+
+---
+
+### `/web/landing-page/components/Hero.tsx`
+
+```tsx
+export default function Hero() {
+  return (
+    <section style={{ padding: "80px 20px", textAlign: "center" }}>
+      <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>
+        Find More. Know More. Keep Everything.
+      </h1>
+      <p style={{ fontSize: "20px", opacity: 0.8 }}>
+        The all-in-one rockhounding platform powered by AI, maps, and real field data.
+      </p>
+
+      <div style={{ marginTop: "30px" }}>
+        <button style={btn}>Get Early Access</button>
+        <button style={{ ...btn, marginLeft: "10px", background: "#333" }}>
+          Download Beta
+        </button>
+      </div>
+    </section>
+  );
+}
+
+const btn = {
+  padding: "14px 24px",
+  fontSize: "16px",
+  background: "#fff",
+  color: "#000",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer"
+};
+```
+
+---
+
+### `/web/landing-page/components/ProblemSolution.tsx`
+
+```tsx
+export default function ProblemSolution() {
+  return (
+    <section style={{ padding: "60px 20px", maxWidth: 800, margin: "auto" }}>
+      <h2>Rockhounding is broken</h2>
+      <ul>
+        <li>No reliable ID tools</li>
+        <li>No clear land access data</li>
+        <li>No structured tracking</li>
+      </ul>
+
+      <h2 style={{ marginTop: 40 }}>RockHound-GO fixes it</h2>
+      <p>Scan → Discover → Log → Track → Repeat</p>
+    </section>
+  );
+}
+```
+
+---
+
+### `/web/landing-page/components/Features.tsx`
+
+```tsx
+export default function Features() {
+  return (
+    <section style={{ padding: "60px 20px" }}>
+      <h2 style={{ textAlign: "center" }}>Core Features</h2>
+
+      <div style={grid}>
+        <Feature title="AI Scan" text="Identify minerals instantly from photos" />
+        <Feature title="Smart Map" text="Geology + land access layers" />
+        <Feature title="Offline Mode" text="Works with no signal in the field" />
+        <Feature title="Collection" text="Track and value your finds" />
+      </div>
+    </section>
+  );
+}
+
+function Feature({ title, text }: any) {
+  return (
+    <div style={card}>
+      <h3>{title}</h3>
+      <p>{text}</p>
+    </div>
+  );
+}
+
+const grid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+  gap: "20px",
+  marginTop: "40px"
+};
+
+const card = {
+  padding: "20px",
+  border: "1px solid #222",
+  borderRadius: "10px"
+};
+```
+
+---
+
+### `/web/landing-page/components/CTA.tsx`
+
+```tsx
+export default function CTA() {
+  return (
+    <section style={{ padding: "80px 20px", textAlign: "center" }}>
+      <h2>Stop guessing. Start collecting with precision.</h2>
+      <button style={btn}>Join Early Access</button>
+    </section>
+  );
+}
+
+const btn = {
+  marginTop: "20px",
+  padding: "14px 28px",
+  fontSize: "16px",
+  background: "#fff",
+  color: "#000",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer"
+};
+```
+
+---
+
+### `/web/landing-page/app/globals.css`
+
+```css
+* {
+  box-sizing: border-box;
+}
+```
+
+---
+
+## 3. Run It
+
+```bash
+cd web/landing-page
+npm install
+npm run dev
+```
+
+---
+
+## 4. Key Assumptions
+
+* Separate landing app from core mobile app (clean scaling)
+* No Tailwind yet (kept minimal + fast)
+* No API hooked yet (CTA is placeholder)
+
+---
+
+## 5. Next Move (high impact)
+
+If you want this to actually convert:
+
+* Add email capture (Supabase / Firebase)
+* Add analytics (PostHog)
+* Add waitlist logic + referral loop
+* Add App Store deep links
+
+Say the word → I’ll wire full funnel + backend in one pass.
